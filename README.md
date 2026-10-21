@@ -44,7 +44,6 @@ Other scripts: `npm test` (Jest) and `npm run lint` (ESLint).
 - There is no weather data source or API client yet. Choose a provider and add a thin client module.
 - Replace the template screen and wire up the navigators that are already installed.
 - The test only checks that the root component renders. Add tests for real screens as they arrive.
-- Every start script runs `api.js` before Metro. Review that file, or remove it from the scripts.
 
 ## Author
 
