@@ -1,53 +1,50 @@
 # Weather Forecast Mobile App
 
-A cross-platform React Native mobile application for global real-time weather forecasts, hourly conditions, and multi-city weather tracking.
+A React Native app shell for a weather forecast app. Navigation, gesture and animation libraries are installed, but the screen is still the React Native starter template, so no forecast data is shown yet.
 
-## Overview
+## The problem
 
-`weather-mobile` delivers comprehensive atmospheric forecasts, temperature curves, humidity/wind metrics, and multi-tab location switching with smooth gesture navigation.
+Checking the forecast on a phone should take one tap and show the outlook at a glance. This repo is the mobile foundation for that: a project that builds for Android and iOS, with a test and lint setup. The product screens and data layer are still to be written.
 
-## Tech Stack
+## What it does
 
-- **Framework**: React Native (v0.82) / React 17
-- **Navigation**: React Navigation (Bottom Tabs, Material Top Tabs, Drawer, Stack)
-- **Animations & Gestures**: `react-native-reanimated`, `react-native-gesture-handler`, `react-native-tab-view`
+What the code does today:
 
-## Prerequisites
+- Runs as a cross-platform React Native project with `android/` and `ios/` native projects and a root component in `App.js`.
+- Renders the React Native template screen from `App.js` ("Step One", "See Your Changes", "Learn More").
+- Has React Navigation packages installed (bottom tabs, drawer, stack and material top tabs), but none are wired into the app.
+- Has gesture, animation and tab-view libraries installed (`react-native-gesture-handler`, `react-native-reanimated`, `react-native-tab-view`), with no source files using them yet.
+- Includes a Jest test (`__tests__/App-test.js`) that renders the root component, plus ESLint and Prettier configuration.
 
-- Node.js (v16 or v18 recommended)
-- Android Studio / Xcode configured with Android SDK / CocoaPods
-- Package manager (`pnpm` or `npm`)
+## How it's built
 
-## Getting Started
+- **Framework**: React Native 0.82, with React 17.0.2 pinned in `package.json`.
+- **Navigation**: React Navigation 5 packages.
+- **Tooling**: Jest 27 with the `react-native` preset, ESLint 7, Babel with `metro-react-native-babel-preset`.
+- **Structure**: one root component (`App.js`) registered in `index.js`. There are no screens, services or data layer in the repo yet.
 
-1. **Install dependencies**:
-   ```bash
-   pnpm install
-   # or
-   npm install
-   ```
+## Running it locally
 
-2. **Install iOS Pods** (macOS only):
-   ```bash
-   cd ios && pod install && cd ..
-   ```
+Requires Node.js 16 or 18, plus the Android SDK and/or Xcode (with CocoaPods on macOS).
 
-3. **Start Metro Bundler**:
-   ```bash
-   npm start
-   ```
+```bash
+pnpm install   # or: npm install
+cd ios && pod install && cd ..   # macOS only
+npm start
+```
 
-4. **Launch on Device / Simulator**:
-   - Run on Android: `npm run android`
-   - Run on iOS: `npm run ios`
+In another terminal, run `npm run android` or `npm run ios`.
 
-## Available Scripts
+Other scripts: `npm test` (Jest) and `npm run lint` (ESLint).
 
-- `npm start` - Launches the React Native Metro bundler.
-- `npm run android` - Compiles and runs the Android application.
-- `npm run ios` - Compiles and runs the iOS application.
-- `npm test` - Runs Jest test suites.
-- `npm run lint` - Runs ESLint code quality checks.
+## What I learned / what I'd do next
+
+- The versions do not line up. React Native 0.82 is normally paired with React 19, but this project pins React 17, React Navigation 5, Reanimated 2 and Gesture Handler 1. Confirm the app builds and runs before adding features, and align the versions or pick a newer stack.
+- The forecast features described in the earlier README (hourly conditions, temperature curves, multi-city tracking) are not in the code.
+- There is no weather data source or API client yet. Choose a provider and add a thin client module.
+- Replace the template screen and wire up the navigators that are already installed.
+- The test only checks that the root component renders. Add tests for real screens as they arrive.
+- Every start script runs `api.js` before Metro. Review that file, or remove it from the scripts.
 
 ## Author
 
